@@ -1,4 +1,4 @@
-# CLIProject
+# CLI_Project
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/CLI_Project`. To experiment with that code, run `bin/console` for an interactive prompt.
 
@@ -37,4 +37,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## Code of Conduct
 
-Everyone interacting in the CLIProject project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/CLI_Project/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the CLI_Project project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/CLI_Project/blob/master/CODE_OF_CONDUCT.md).

@@ -2,7 +2,7 @@ require_relative 'lib/CLI_Project/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "CLI_Project"
-  spec.version       = CLIProject::VERSION
+  spec.version       = CLI_Project::VERSION
   spec.authors       = ["anna"]
   spec.email         = ["annaick1995@gmail.com"]
 

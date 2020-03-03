@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "./lib/environment"
+
+CLI_Project::Cli.new.call

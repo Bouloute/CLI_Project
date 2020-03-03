@@ -1,0 +1,16 @@
+
+[1mFrom:[0m /mnt/c/Users/annai/dev/flatiron/labs/CLI_Project/lib/CLI_Project/Cli.rb @ line 39 CLI_Project::Cli#team_stats:
+
+    [1;34m36[0m: [32mdef[0m [1;34mteam_stats[0m
+    [1;34m37[0m:     puts [31m[1;31m"[0m[31mHere is the list of the teams currently playing[1;31m"[0m[31m[0m
+    [1;34m38[0m: 
+ => [1;34m39[0m:     binding.pry
+    [1;34m40[0m:     [1;34m#team_index = 0[0m
+    [1;34m41[0m:     [1;34m#@scraped_team.scrapped.css("div#sortableContent").css("td").each_with_index{|team_info, index| [0m
+    [1;34m42[0m:     [1;34m#    if (11 * team_index + 1) == index && team_index != 30[0m
+    [1;34m43[0m:     [1;34m#        puts "#{team_index + 1}. #{team_info.text}"[0m
+    [1;34m44[0m:     [1;34m#        team_index += 1[0m
+    [1;34m45[0m:     [1;34m#    end[0m
+    [1;34m46[0m:     [1;34m#}[0m
+    [1;34m47[0m: [32mend[0m
+
