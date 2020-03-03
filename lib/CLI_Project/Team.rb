@@ -10,7 +10,7 @@ class Team
 
 
     def self.display_all_names_only
-        @@all.each_with_index{|team, index| puts "#{index}. #{team.name}"}
+        @@all.each_with_index{|team, index| puts "#{index + 1}. #{team.name}"}
     end
 
     def display_all_stats
@@ -23,7 +23,7 @@ class Team
     end
 
     def self.get_from_index(index)
-        @@all[index]
+        @@all[index - 1]
     end
 
 

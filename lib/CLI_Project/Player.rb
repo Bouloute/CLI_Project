@@ -10,7 +10,7 @@ class Player
 
 
     def self.display_all_names_only
-        @@all.each_with_index{|player, index| puts "#{index}. #{player.name}"}
+        @@all.each_with_index{|player, index| puts "#{index + 1}. #{player.name}"}
     end
 
     def display_all_stats
@@ -23,7 +23,7 @@ class Player
     end
 
     def self.get_from_index(index)
-        @@all[index]
+        @@all[index -1]
     end
 
 
