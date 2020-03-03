@@ -1,6 +1,8 @@
 require "./lib/CLI_Project/version"
 require_relative "./CLI_Project/Cli"
 require_relative "./CLI_Project/scraper"
+require_relative "./CLI_Project/Team"
+require_relative "./CLI_Project/Player"
 
 require "pry"
 require "nokogiri"
