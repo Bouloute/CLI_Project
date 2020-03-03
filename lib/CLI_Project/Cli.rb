@@ -17,13 +17,13 @@ class CLI_Project::Cli
     
     #Creates each team
     def set_all_teams
-        aoh_team_data = Scraper.teams("https://www.cbssports.com/nhl/stats/teamsort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
+        aoh_team_data = Team.set_teams_from_scraped_data("https://www.cbssports.com/nhl/stats/teamsort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
         aoh_team_data.each{|team| Team.new(team)}
     end
 
     #Creates each team
     def set_all_players
-        aoh_player_data = Scraper.players("https://www.cbssports.com/nhl/stats/playersort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
+        aoh_player_data = Player.set_players_from_scraped_data("https://www.cbssports.com/nhl/stats/playersort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
         aoh_player_data.each{|player| Player.new(player)}
     end
 
