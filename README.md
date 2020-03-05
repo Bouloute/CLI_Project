@@ -1,16 +1,13 @@
 # CLI_Project
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/CLI_Project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This CLI will allow you to access stats from the NHL. You will have the choice to access either team stats or individual player stats.
+All data comes from CBS Sports
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'CLI_Project'
-```
+    $gem 'CLI_Project'
 
 And then execute:
 
@@ -18,11 +15,18 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install CLI_Project
+$ gem install CLI_Project
 
 ## Usage
 
-TODO: Write usage instructions here
+This Gem will prompt you to know what you'd like to do.
+You will have the choice to enter the number that preceeds the instruction.
+    example: 
+        1. Team Stats
+        2. Player Stats
+    If you would like to see the stats of a team, enter "1"
+
+At any time you can type "help" to see what commands are available. You may also type in "exit" at any time to exit the gem.
 
 ## Development
 
@@ -32,9 +36,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/CLI_Project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/CLI_Project/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/Bouloute/CLI_Project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/Bouloute/CLI_Project/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## Code of Conduct
 
-Everyone interacting in the CLI_Project project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/CLI_Project/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the CLI_Project project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Bouloute/CLI_Project/blob/master/CODE_OF_CONDUCT.md).

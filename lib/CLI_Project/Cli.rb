@@ -84,8 +84,6 @@ class CLI_Project::Cli
         #collects command
         while 
         user_input = gets.chomp.downcase
-        #I would've rather used a case
-        #How to use case to check if number or string???
             if user_input.to_i != 0 && user_input.to_i <= Team.all.size
                 team_asked = Team.get_from_index(user_input.to_i)
                 team_asked.display_all_stats
