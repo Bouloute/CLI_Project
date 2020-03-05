@@ -1,7 +1,7 @@
 # CLI_Project
 
 This CLI will allow you to access stats from the NHL. You will have the choice to access either team stats or individual player stats.
-All data comes from CBS Sports
+All data comes from CBS Sports (https://www.cbssports.com/nhl/stats)
 
 ## Installation
 
