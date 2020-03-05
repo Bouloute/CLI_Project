@@ -23,16 +23,16 @@ class Scraper
         scraped_data = Scraper.scraper(index_url)
 
         row_index = 1
-        scraped_data.css("td").each_with_index{|row_info, index| 
+        scraped_data.css("td").each_with_index{|row_info, element_index| 
             # 11 because there is 11 collums of information given one team
             if class_name.downcase == "team"
-                if (11 * row_index + 1) == index && !row_info.text.include?("Pages") # last row is not team information
+                if (11 * row_index + 1) == element_index 
                     creator_from_data(scraped_data, row_index, 11)
                     row_index += 1
                 end
             # 19 because there is 19 collums of information given one player
             elsif class_name.downcase == "player"
-                if (19 * row_index + 1) == index && !row_info.text.include?("Pages") # last row is not player information
+                if (19 * row_index + 1) == element_index 
                     creator_from_data(scraped_data, row_index, 19)
                     row_index += 1
                 end
