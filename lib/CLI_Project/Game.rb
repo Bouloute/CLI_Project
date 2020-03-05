@@ -21,31 +21,4 @@ class Game
     def self.all 
         @@all
     end
-
-    def self.set_games_from_scraped_data(index_url)
-        scraped_games = Scraper.scraper(index_url)
-        
-        game_data = {}
-        scraped_games.css("td.TableBase-bodyTd").each_with_index{|game_info, index| 
-            
-            case index % 5
-            
-            when 0
-                game_data[:team_one] = game_info.text.gsub(/\s+/, '')
-            when 1
-                game_data[:team_two] = game_info.text.gsub(/\s+/, '')
-            when 2
-                game_data[:time] = game_info.text.gsub(/\s+/, '')
-                if game_data[:time].include?("NBCS")
-                    game_data[:time] = game_data[:time].gsub("NBCS", "")
-                end
-            when 3
-                game_data[:place] = game_info.text.gsub(/\s+/, '')
-                Game.new(game_data)
-                game_data = {}
-            end
-            
-           
-        }
-    end
 end

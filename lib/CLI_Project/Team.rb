@@ -15,7 +15,17 @@ class Team
 
     def display_all_stats
         puts "Here is #{@name}'s stats:"
-        team_data.each{|key, value| puts "#{key} : #{value}"}
+        team_data.each{|key, value| 
+            #added prettines
+            case key.size
+            when 1 
+                puts "#{key}    : #{value}"
+            when 2 
+                puts "#{key}   : #{value}"
+            when 3
+                puts "#{key}  : #{value}"
+            end
+        }
     end
 
     def self.all 
@@ -26,17 +36,17 @@ class Team
         @@all[index - 1]
     end
 
-    #returns an array of hashes. Each hash is a teams stat info
-    def self.set_teams_from_scraped_data(index_url)
+    /#returns an array of hashes. Each hash is a teams stat info
+    def self.set_teams_from_scraped_data(index_url, class_name)
         scraped_teams = Scraper.scraper(index_url)
-
-        #puts "Here is the list of the teams currently playing this season, in order of the most points"
-        #teams =[]
 
         team_index = 1
         scraped_teams.css("td").each_with_index{|team_info, index| 
             # 11 because there is 11 collums of information given one team
+            if classname == Team
             if (11 * team_index + 1) == index && !team_info.text.include?("Pages") # last row is not team information
+            else 
+                if (19 * team_index + 1) == index && !team_info.text.include?("Pages")
          
                 team_data = {}
                 collum_index = 0
@@ -47,11 +57,14 @@ class Team
                     data_index += 1
                     
                 }
-                Team.new(team_data)
+                if number == 11 
+                    Team.new(team_data)
+                else 
+                   Player(team_data)
+                end
                 
                 team_index += 1
             end
         }
-
-    end
+    end #/
 end

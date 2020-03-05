@@ -2,8 +2,8 @@ class CLI_Project::Cli
     attr_reader :teams
     def call    
        # Set up
-        #set_all_teams
-        #set_all_players
+        set_all_teams
+        set_all_players
         set_all_games
 
         main_menu
@@ -13,17 +13,17 @@ class CLI_Project::Cli
     
     #Creates each team
     def set_all_teams
-        Team.set_teams_from_scraped_data("https://www.cbssports.com/nhl/stats/teamsort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
+        Scraper.set_from_scraped_data("https://www.cbssports.com/nhl/stats/teamsort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999", "team")
     end
 
     #Creates each player
     def set_all_players
-        Player.set_players_from_scraped_data("https://www.cbssports.com/nhl/stats/playersort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
+        Scraper.set_from_scraped_data("https://www.cbssports.com/nhl/stats/playersort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999","player")
     end
 
     #Creates each game
     def set_all_games
-        Game.set_games_from_scraped_data("https://www.cbssports.com/nhl/schedule/")
+        Scraper.set_games_from_scraped_data("https://www.cbssports.com/nhl/schedule/")
     end
     #----------------------------------------------------------------
 
@@ -68,6 +68,7 @@ class CLI_Project::Cli
     
     #---------------------------CLI----------------------------------
     def main_menu
+        #binding.pry
         puts "Welcome to NHL_Stats"
         puts "Here you will be able to see your favorite team or player's statistics from CBS Sports."
         menu_help
@@ -163,6 +164,7 @@ class CLI_Project::Cli
             when "help"
                 game_help
             when "back"
+                menu_help
                 return "back"
             when "exit"
                 return "exit"

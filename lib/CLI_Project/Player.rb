@@ -15,7 +15,17 @@ class Player
 
     def display_all_stats
         puts "Here is #{@name}'s stats:"
-        player_data.each{|key, value| puts "#{key} : #{value}"}
+        player_data.each{|key, value|
+            #added prettines
+            case key.size
+            when 1 
+                puts "#{key}    : #{value}"
+            when 2 
+                puts "#{key}   : #{value}"
+            when 3
+                puts "#{key}  : #{value}"
+            end
+        }
     end
 
     def self.all 
@@ -26,8 +36,7 @@ class Player
         @@all[index -1]
     end
 
-
-    #returns an array of hashes. Each hash is a teams stat info
+    /#returns an array of hashes. Each hash is a teams stat info
     def self.set_players_from_scraped_data(index_url)
         scraped_players = Scraper.scraper(index_url)
 
@@ -50,7 +59,5 @@ class Player
                 player_index += 1
             end
         }
-        
-    end
-
+    end#/
 end
