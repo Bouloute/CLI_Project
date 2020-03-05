@@ -68,8 +68,7 @@ class CLI_Project::Cli
     
     #---------------------------CLI----------------------------------
     def main_menu
-        #binding.pry
-        puts "Welcome to NHL_Stats"
+        puts "Welcome to NHL Stats"
         puts "Here you will be able to see your favorite team or player's statistics from CBS Sports."
         menu_help
 

@@ -3,39 +3,38 @@ class Scraper
         Nokogiri::HTML(open(index_url))
     end 
 
-    def self.whatToDO(scraped_teams, team_index, number)
-        team_data = {}
+    def self.creator_from_data(scraped_data, row_index, number)
+        data = {}
         collum_index = 0
-        data_index = (number * (team_index - 1)) + 1
+        data_index = (number * (row_index - 1)) + 1
         number.times{
-            team_data[scraped_teams.css("th")[collum_index].text] = scraped_teams.css("td")[data_index].text
+            data[scraped_data.css("th")[collum_index].text] = scraped_data.css("td")[data_index].text
             collum_index += 1
             data_index += 1
-            
         }
         if number == 11 
-            Team.new(team_data)
+            Team.new(data)
         else 
-            Player.new(team_data)
+            Player.new(data)
         end
     end
 
     def self.set_from_scraped_data(index_url, class_name)
-        scraped_teams = Scraper.scraper(index_url)
+        scraped_data = Scraper.scraper(index_url)
 
-        team_index = 1
-        scraped_teams.css("td").each_with_index{|team_info, index| 
+        row_index = 1
+        scraped_data.css("td").each_with_index{|row_info, index| 
             # 11 because there is 11 collums of information given one team
             if class_name.downcase == "team"
-                if (11 * team_index + 1) == index && !team_info.text.include?("Pages") # last row is not team information
-                    whatToDO(scraped_teams, team_index, 11)
-                    team_index += 1
+                if (11 * row_index + 1) == index && !row_info.text.include?("Pages") # last row is not team information
+                    creator_from_data(scraped_data, row_index, 11)
+                    row_index += 1
                 end
-
+            # 19 because there is 19 collums of information given one player
             elsif class_name.downcase == "player"
-                if (19 * team_index + 1) == index && !team_info.text.include?("Pages")
-                    whatToDO(scraped_teams, team_index, 19)
-                    team_index += 1
+                if (19 * row_index + 1) == index && !row_info.text.include?("Pages") # last row is not player information
+                    creator_from_data(scraped_data, row_index, 19)
+                    row_index += 1
                 end
             
             end
@@ -67,7 +66,6 @@ class Scraper
                 game_data = {}
             end
             
-           
         }
     end
 end
