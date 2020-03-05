@@ -1,10 +1,11 @@
 class CLI_Project::Cli
-    attr_reader :teams#:scraped_teams, :scrapped_players
+    attr_reader :teams
     def call    
        # Set up
-        set_all_teams
-        set_all_players
-        
+        #set_all_teams
+        #set_all_players
+        set_all_games
+
         main_menu
     end
 
@@ -20,6 +21,10 @@ class CLI_Project::Cli
         Player.set_players_from_scraped_data("https://www.cbssports.com/nhl/stats/playersort/sortableTable/nhl/year-2019-season-regularseason-category-points?print_rows=9999")
     end
 
+    #Creates each game
+    def set_all_games
+        Game.set_games_from_scraped_data("https://www.cbssports.com/nhl/schedule/")
+    end
     #----------------------------------------------------------------
 
 
@@ -30,6 +35,7 @@ class CLI_Project::Cli
         puts "Would you like to access:"
         puts "  1. Team Stats"
         puts "  2. Player Stats"
+        puts "  3. Today's Games"
         puts "Enter the number"
         puts "Enter \"help\" for the list of instructions"
         puts "Enter \"exit\" to leave"
@@ -46,6 +52,13 @@ class CLI_Project::Cli
     #shows the list of commands on the player menu
     def player_help 
         puts "Enter the number of the player you would like more information about"
+        puts "Enter \"help\" for the list of instructions"
+        puts "Enter \"back\" to return to the main menu"
+        puts "Enter \"exit\" to leave"
+    end
+
+    #shows the list of commands on the game menu
+    def game_help 
         puts "Enter \"help\" for the list of instructions"
         puts "Enter \"back\" to return to the main menu"
         puts "Enter \"exit\" to leave"
@@ -67,6 +80,8 @@ class CLI_Project::Cli
                 user_input = team_menu #user_input == "exit" or nil
             when "2", "player", "player stats"
                 user_input = player_menu #user_input == "exit" or nil
+            when "3", "game", "today's game"
+                user_input = game_menu #user_input == "exit" or nil
             when "help"
                 menu_help
             end
@@ -74,6 +89,7 @@ class CLI_Project::Cli
     end
 
     #menu for the team stats
+    #returns nil or "exit" 
     def team_menu
         #displays teams name
         Team.display_all_names_only
@@ -128,6 +144,28 @@ class CLI_Project::Cli
             elsif user_input == "exit"
                 #returns to the main menu to exit
                 return user_input
+            end
+        end
+    end    
+    
+
+    #Shows game playing today
+    def game_menu
+        #displays games
+        Game.display_team_names_only
+        #shows possible commands
+        game_help
+
+        user_input = nil
+        while user_input != "exit"
+            user_input = gets.chomp.downcase
+            case user_input
+            when "help"
+                game_help
+            when "back"
+                return "back"
+            when "exit"
+                return "exit"
             end
         end
     end    

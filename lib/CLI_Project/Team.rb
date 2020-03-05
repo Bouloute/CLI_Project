@@ -26,10 +26,12 @@ class Team
         @@all[index - 1]
     end
 
-
     #returns an array of hashes. Each hash is a teams stat info
     def self.set_teams_from_scraped_data(index_url)
         scraped_teams = Scraper.scraper(index_url)
+
+        #puts "Here is the list of the teams currently playing this season, in order of the most points"
+        #teams =[]
 
         team_index = 1
         scraped_teams.css("td").each_with_index{|team_info, index| 
@@ -49,7 +51,7 @@ class Team
                 
                 team_index += 1
             end
-            
         }
+
     end
 end

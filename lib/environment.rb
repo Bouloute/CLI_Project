@@ -3,6 +3,7 @@ require_relative "./CLI_Project/Cli"
 require_relative "./CLI_Project/scraper"
 require_relative "./CLI_Project/Team"
 require_relative "./CLI_Project/Player"
+require_relative "./CLI_Project/Game"
 
 require "pry"
 require "nokogiri"
