@@ -1,5 +1,4 @@
 class Team
-    extend Scraper
     attr_reader :team_data, :name
     @@all = []
 
@@ -28,13 +27,9 @@ class Team
     end
 
 
-
-     #returns an array of hashes. Each hash is a teams stat info
-     def self.set_teams_from_scraped_data(index_url)
-        scraped_teams = scraper(index_url)
-
-        #puts "Here is the list of the teams currently playing this season, in order of the most points"
-        teams =[]
+    #returns an array of hashes. Each hash is a teams stat info
+    def self.set_teams_from_scraped_data(index_url)
+        scraped_teams = Scraper.scraper(index_url)
 
         team_index = 1
         scraped_teams.css("td").each_with_index{|team_info, index| 
@@ -50,13 +45,11 @@ class Team
                     data_index += 1
                     
                 }
-                teams.push(team_data)
+                Team.new(team_data)
                 
                 team_index += 1
             end
             
         }
-
-        teams
     end
 end
