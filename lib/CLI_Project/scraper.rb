@@ -6,7 +6,7 @@ class Scraper
     def self.creator_from_data(scraped_data, row_index, number)
         data = {}
         collum_index = 0
-        data_index = (number * (row_index - 1)) + 1
+        data_index = (number * (row_index)) + 1
         number.times{
             data[scraped_data.css("th")[collum_index].text] = scraped_data.css("td")[data_index].text
             collum_index += 1
@@ -22,25 +22,22 @@ class Scraper
     def self.set_from_scraped_data(index_url, class_name)
         scraped_data = Scraper.scraper(index_url)
 
-        row_index = 1
+        row_index = 0
         scraped_data.css("td").each_with_index{|row_info, element_index| 
             # 11 because there is 11 collums of information given one team
             if class_name.downcase == "team"
-                if (11 * row_index + 1) == element_index 
+                if (11 * row_index + 1) == element_index && !row_info.text.include?("Pages")
                     creator_from_data(scraped_data, row_index, 11)
                     row_index += 1
                 end
             # 19 because there is 19 collums of information given one player
             elsif class_name.downcase == "player"
-                if (19 * row_index + 1) == element_index 
+                if (19 * row_index + 1) == element_index && !row_info.text.include?("Pages")
                     creator_from_data(scraped_data, row_index, 19)
                     row_index += 1
                 end
-            
-            end
-                
+            end 
         }
-
     end
 
     def self.set_games_from_scraped_data(index_url)
